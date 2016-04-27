@@ -1,0 +1,3 @@
+class PickupsController < ApplicationController
+
+end

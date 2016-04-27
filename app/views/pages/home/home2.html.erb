@@ -1,0 +1,141 @@
+<!-- Homescreen 2 - Add Donor Form-->
+<html>
+
+<head>
+</head>
+
+<body>
+   
+    <!--Main Content-->
+    <%= render 'layouts/navbar' %>
+    <div class="container white-container">
+        <div class="row">
+            <div class="col-xs-6">
+                <h3> Donor Information</h3>
+            </div>
+            <div class="col-xs-6">
+                <h4> Please enter the number of items to be donated, and a brief description of them.</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+
+                <!--Donor Info -->
+                <form>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="fistName">First Name </label>
+                                <input type="text" class="form-control" id="fistName">
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="lastName">Last Name
+                                    <red class="red">*</red>
+                                </label>
+                                <input type="text" class="form-control" id="lastName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNum">Phone Number
+                            <red class="red">*</red>
+                        </label>
+                        <input type="text" class="form-control" id="phoneNum">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email </label>
+                        <input type="email" class="form-control" id="email">
+                    </div>
+                    <h3> Pickup Address
+          <red class="red">*</red>
+        </h3>
+                    <div class="form-group">
+                        <label for="line1">Line 1 </label>
+                        <input type="text" class="form-control" id="line1">
+                    </div>
+                    <div class="form-group">
+                        <label for="line2">Line 2</label>
+                        <input type="text" class="form-control" id="line2">
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="city">City </label>
+                                <input type="text" class="form-control" id="city">
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="zipCode">Zip Code </label>
+                                <input type="text" class="form-control" id="zipCode">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Address-->
+                    <div class="form-group">
+                        <label for="userType">Dwelling Type </label>
+                        <select class="form-control">
+                            <option value="current">Current Residence</option>
+                            <option value="sellMove">Selling/Moving Home</option>
+                            <option value="storageFacility">Storage Facility</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <!--END DONOR INFO-->
+
+            <!-- Item Info -->
+
+            <div class="col-xs-6">
+
+                <!--Number of Items-->
+                <form>
+                    <div class="form-group">
+                        <label for="numItems">Number of Items: </label>
+                        <select class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10+</option>
+                        </select>
+                    </div>
+
+                    <!-- Item & Donor Notes-->
+                    <!-- Max text input length 300 chars -->
+                    <div class="form-group">
+                        <label for="itemNotes">Item Notes </label>
+                        <textarea class="form-control custom-control" id="itemNotes" rows="5" maxlength="300" style="resize:none"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="donorNotes">Donor Notes </label>
+                        <textarea class="form-control custom-control" id="donorNotes" rows="5" maxlength="300" style="resize:none"></textarea>
+                    </div>
+
+                    <!-- Form sumbit-->
+                    <div class="padding-top">
+                        <div class="form-group">
+                            <a href="/home/home1">
+                                <btn class="btn btn-success btn-wide extra-right-margin">Add Pickup</btn>
+                            </a>
+                            <a href="/home/home1">
+                                <btn class="btn btn-danger btn-wide">Cancel</btn>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- END ITEM INFO-->
+
+        </div>
+    </div>
+
+    <!-- END MAIN CONTENT -->
+
+</body>
+
+</html>

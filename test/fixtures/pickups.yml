@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day_id: 1
+  donor_name: MyString
+  donor_address_line1: MyString
+  donor_address_line2: MyString
+  donor_city: MyString
+  donor_zip: MyString
+  donor_dwelling_type: MyString
+  donor_location_instructions: MyString
+  donor_phone: MyString
+  donor_email: MyString
+  number_of_items: 
+  item_description: MyText
+  other_notes: MyText
+  pickup_time: MyString
+
+two:
+  day_id: 1
+  donor_name: MyString
+  donor_address_line1: MyString
+  donor_address_line2: MyString
+  donor_city: MyString
+  donor_zip: MyString
+  donor_dwelling_type: MyString
+  donor_location_instructions: MyString
+  donor_phone: MyString
+  donor_email: MyString
+  number_of_items: 
+  item_description: MyText
+  other_notes: MyText
+  pickup_time: MyString

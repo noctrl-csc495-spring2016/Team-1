@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Name</Data></Cell>
+        <Cell><Data ss:Type="String">Address</Data></Cell>
+        <Cell><Data ss:Type="String">Town</Data></Cell>
+        <Cell><Data ss:Type="String">State</Data></Cell>
+        <Cell><Data ss:Type="String">Zip</Data></Cell>
+        <Cell><Data ss:Type="String">E-mail</Data></Cell>
+        <Cell><Data ss:Type="String">Date Donated</Data></Cell>
+        <Cell><Data ss:Type="String">Items Donated</Data></Cell>
+      </Row>
+    <% @products.each do |product| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= pickup.donor_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= pickup.donor_address_line1 %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= pickup.donor_city %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= pickup.donor_zip %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= pickup.donor_email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= pickup.pickup_time %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= pickup.item_description %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

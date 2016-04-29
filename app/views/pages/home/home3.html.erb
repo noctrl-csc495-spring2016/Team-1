@@ -1,0 +1,170 @@
+<!-- Homescreen 3 - Add Donor Form Completed-->
+<html>
+
+<head>
+
+</head>
+
+<body>
+   <%= render 'layouts/navbar' %>
+    <!--Main Content-->
+
+    <div class="container white-container">
+        <div class="row">
+            <div class="col-xs-6">
+                <h3> Donor Information</h3>
+            </div>
+            <div class="col-xs-6">
+                <div class="col-xs-12 col-sm-6">
+                    <h3> Schedule Pickup</h3>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <h3> Reject Pickup</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+
+                <!--Donor Info -->
+                <form>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="fistName">First Name </label>
+                                <input type="text" class="form-control" value="Jennifer" id="fistName">
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="lastName">Last Name
+                                    <red class="red">*</red>
+                                </label>
+                                <input type="text" class="form-control" value="Dust" id="lastName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNum">Phone Number
+                            <red class="red">*</red>
+                        </label>
+                        <input type="text" class="form-control" value="630-663-0171" id="phoneNum">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email </label>
+                        <input type="email" class="form-control" value="jldust@noctrl.edu" id="email">
+                    </div>
+                    <h3> Pickup Address
+          <red class="red">*</red>
+        </h3>
+                    <div class="form-group">
+                        <label for="line1">Line 1 </label>
+                        <input type="text" class="form-control" value="222 Woodward Ave" id="line1">
+                    </div>
+                    <div class="form-group">
+                        <label for="line2">Line 2</label>
+                        <input type="text" class="form-control" id="line2">
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="city">City </label>
+                                <input type="text" class="form-control" value="Lisle" id="city">
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="zipCode">Zip Code </label>
+                                <input type="text" class="form-control" value="60516" id="zipCode">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Address-->
+                    <div class="form-group">
+                        <label for="userType">Dwelling Type </label>
+                        <select class="form-control">
+                            <option value="current">Current Residence</option>
+                            <option value="sellMove">Selling/Moving Home</option>
+                            <option value="storageFacility">Storage Facility</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <!--END DONOR INFO-->
+
+            <!--Schedule & Reject -->
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-6">
+                        <label for="pickupDays">Day: </label>
+                        <select class="form-control">
+                            <option value="1">Fri Apr 22 5 Pickups</option>
+                            <option value="2">Mon Apr 25 3 Pickups</option>
+                            <option value="3">Thu Apr 28 8 Pickups</option>
+                            <option value="3">Mon May 2 0 Pickups</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <label for="rejectReson">Reason: </label>
+                        <select class="form-control">
+                            <option value="1">Damaged</option>
+                            <option value="2">Not First Floor</option>
+                            <option value="3">Too Far away</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- END SCHEDULE & REJECT -->
+
+            <!-- Item Info -->
+
+            <div class="col-xs-6">
+                <h5> Please enter the number of items to be donated, and a brief description of them.</h5>
+                <!--Number of Items-->
+                <form>
+                    <div class="form-group">
+                        <label for="numItems">Number of Items: </label>
+                        <select class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3" selected>3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10+</option>
+                        </select>
+                    </div>
+
+                    <!-- Item & Donor Notes-->
+                    <!-- Max text input length 300 chars -->
+                    <div class="form-group">
+                        <label for="itemNotes">Item Notes </label>
+                        <textarea class="form-control custom-control" id="itemNotes" rows="5" maxlength="300" style="resize:none">Young adult bed frame, black bookshelf, black tall dresser with back cover.</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="donorNotes">Donor Notes </label>
+                        <textarea class="form-control custom-control" id="donorNotes" rows="5" maxlength="300" style="resize:none">Knock on red door, donor will be home.</textarea>
+                    </div>
+
+                    <!-- Form sumbit-->
+                    <div class="padding-top">
+                        <div class="form-group">
+                            <a href="/home/home1">
+                                <btn class="btn btn-success btn-wide extra-right-margin">Update Donor</btn>
+                            </a>
+                            <a href="/home/home1">
+                                <btn class="btn btn-danger btn-wide">Cancel</btn>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- END ITEM INFO-->
+
+        </div>
+    </div>
+
+    <!-- END MAIN CONTENT -->
+</body>
+
+</html>

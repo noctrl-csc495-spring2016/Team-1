@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<head>
+
+</head>
+
+<body>
+    <%= render 'layouts/navbar' %>
+
+    <div class='container white-container'>
+
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <h2>Schedule</h2>
+                <p>Select a pickup from the list below to edit. To add a new donation click 'Add New Pickup Day.'</p>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-xs-5 col-xs-offset-1">
+                <a href="/schedule/schedule2">
+                    <btn class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add New Pickup Day</btn>
+                </a>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Pickup Quantity</th>
+                            <th>Towns</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tue April 5</td>
+                            <td>6 Pickups</td>
+                            <td>Oak Brook, Lombard, Villa Park</td>
+                        </tr>
+                        <tr onclick="window.document.location='/schedule/schedule3';">
+                            <td>Tue April 12</td>
+                            <td>4 Pickups</td>
+                            <td>Lisle, Naperville, Downers Grove, Rockford, Glen Ellyn, ...</td>
+                        </tr>
+                        <tr>
+                            <td>Fri April 15</td>
+                            <td>No Pickups</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Fri April 22</td>
+                            <td>1 Pickup</td>
+                            <td>Westmont</td>
+                        </tr>
+                        <tr>
+                            <td>Tue May 3</td>
+                            <td>No Pickups</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Thu May 5</td>
+                            <td>3 Pickups</td>
+                            <td>Woodridge, Lemont</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

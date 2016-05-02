@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<head>
+</head>
+
+<body>
+    <%= render 'layouts/navbar' %>
+
+    <!-- Begin main content -->
+    <div class="container">
+        <div class="row">
+            <div class='col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 well'>
+                <h4 class="text-center">Add New User</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="newUser">New User: </label>
+                        <input type="text" class="form-control" id="newUser">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email: </label>
+                        <input type="email" class="form-control" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="userType">User Type: </label>
+                        <select class="form-control">
+                            <option value="standard">Standard</option>
+                            <option value="admin">Admin</option>
+                            <option value="entry">Entry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password: </label>
+                        <input type="password" class="form-control" id="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="passConfirm">Confirm Password: </label>
+                        <input type="password" class="form-control" id="passConfirm">
+                    </div>
+                    <div class="form-group">
+                        <a href="/admin/admin1">
+                            <btn class="btn btn-success btn-wide extra-right-margin">OK</btn>
+                        </a>
+                        <a href="/admin/admin1">
+                            <btn class="btn btn-danger btn-wide">Cancel</btn>
+                        </a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

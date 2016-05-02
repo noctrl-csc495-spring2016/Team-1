@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<head>
+</head>
+
+<body>
+   <%= render 'layouts/navbar' %>
+
+    <div class="container">
+        <div class="row">
+            <div class='col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 well'>
+                <form>
+                    <div class="form-group">
+                        Month:
+                        <select class="extra-right-margin form-control">
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        Year:
+                        <select class="form-control">
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                            <option value="2014">2014</option>
+                        </select>
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        Save As:
+                        <input type="text" class="form-control" placeholder="example.csv">
+                    </div>
+                    <div class="form-group">
+                        <a href="/reports/report1">
+                            <btn class="btn btn-success btn-wide extra-right-margin">OK</btn>
+                        </a>
+                        <a href="/reports/report1">
+                            <btn class="btn btn-danger btn-wide">Cancel</btn>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

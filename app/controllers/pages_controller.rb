@@ -1,8 +1,19 @@
 class PagesController < ApplicationController
-  
   # /
+    def index
+        render 'pages/index.html.erb'
+    end
+    # /home/home1
   def home1
-    render 'pages/home/home1.html'
+      render 'pages/home/home1.html.erb'
+  end
+    # /home/home2
+  def home2
+    render 'pages/home/home2.html'
+  end
+      # /
+  def home3
+    render 'pages/home/home3.html'
   end
   
   # /about

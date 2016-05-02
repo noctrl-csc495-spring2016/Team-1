@@ -42,8 +42,8 @@
                         <input type="text" class="form-control" placeholder="example.csv">
                     </div>
                     <div class="form-group">
-                        <a href= pickup_path(format: "csv")>
-                            <%= button_to "Export", :id => "donor_export_btn", :method => :get %>
+                        <a href="/donor.csv">
+                            <btn class="btn btn-success btn-wide extra-right-margin">Export</btn>
                         </a>
                         <a href="/reports/report1">
                             <btn class="btn btn-danger btn-wide">Cancel</btn>

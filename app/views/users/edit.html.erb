@@ -11,8 +11,24 @@
         <div class="row">
             <div class='col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 well'>
                 <h4 class="text-center">Manage User</h4>
-                <form>
-                    <h5>User ID: profBill</h5>
+                <%= form_for(@user) do |f| %>
+            
+                  <h5>User Name: <%= @user.user_name %></h5>
+                  <h5>User ID: <%= @user.user_id %></h5>
+            
+                  <%= f.label :password %>
+                  <%= f.password_field :password, class: 'form-control' %>
+            
+                  <%= f.label :password_confirmation, "Confirmation" %>
+                  <%= f.password_field :password_confirmation, class: 'form-control' %>
+            
+                  <%= f.submit "Save changes", class: "btn btn-primary" %>
+                  <%= link_to "Delete User", users_path, method: :destroy,
+                                                     data: {confirm: "Are you sure?"},
+                                                     class: 'btn btn-danger btn-wide' %>
+                <% end %>
+                <!---<form>
+                    <h5>User ID: </h5>
                     <div class="form-group">
                         <h5>Change Password</h5>
                         <label for="pNew">New Password: </label>
@@ -37,19 +53,19 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <a href="/admin/admin3">
+                        <a href="/users/admin3">
                             <btn class="btn btn-success btn-wide extra-right-margin">Update Type</btn>
                         </a>
                     </div>
                     <br>
                     <center>
                         <div class="form-group">
-                            <a href="/admin/admin1">
+                            <a href="/users/admin1">
                                 <btn class="btn btn-danger btn-wide">Remove User</btn>
                             </a>
                         </div>
                     </center>
-                </form>
+                </form>--->
 
             </div>
         </div>

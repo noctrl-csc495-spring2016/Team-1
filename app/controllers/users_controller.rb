@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     
   def admin1
-    @users = User.all
+    @users = User.paginate(page: params[:page])
   end
   
   def show
@@ -16,8 +16,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Odyssey!"
-      render 'admin1'
+      flash[:success] = "Acount created!"
+      redirect_to action: 'admin1'
     else
       render 'new'
     end
@@ -28,12 +28,12 @@ class UsersController < ApplicationController
   end
   
   def update
-    if params[:user][:password].empty?
-      @user.errors.add(:password, "can't be empty")
+    if params[:user][:user_password_digest].empty?
+      @user.errors.add(:user_password_digest, "can't be empty")
       render 'edit'
     elsif @user.update_attributes(user_params)
       flash[:success] = "Password has been reset."
-      render 'admin1'
+      redirect_to action: 'admin1'
     else
       render 'edit'
     end
@@ -42,14 +42,14 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
-    redirect_to users_url
+    redirect_to action: 'admin1'
   end
 
   private
 
     def user_params
-      params.require(:user).permit(:user_name, :user_email, :user_password,
-                                   :user_password_confirmation)
+      params.require(:user).permit(:user_id, :user_name, :user_email, :user_password_digest,
+                                   :permission_level)
     end
     
     def correct_user

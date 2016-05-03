@@ -17,13 +17,13 @@
                   <h5>User ID: <%= @user.user_id %></h5>
             
                   <%= f.label :password %>
-                  <%= f.password_field :password, class: 'form-control' %>
+                  <%= f.password_field :user_password_digest, class: 'form-control' %>
             
                   <%= f.label :password_confirmation, "Confirmation" %>
                   <%= f.password_field :password_confirmation, class: 'form-control' %>
             
                   <%= f.submit "Save changes", class: "btn btn-primary" %>
-                  <%= link_to "Delete User", users_path, method: :destroy,
+                  <%= link_to "Delete User", @user, method: :destroy,
                                                      data: {confirm: "Are you sure?"},
                                                      class: 'btn btn-danger btn-wide' %>
                 <% end %>

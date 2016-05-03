@@ -23,8 +23,11 @@
                   <%= f.label :user_email %>
                   <%= f.email_field :user_email, class: 'form-control' %>
                   
+                  <%= f.label :permission_level %>
+                  <%= f.select :permission_level, [['Entry','entry'],['Standard','standard'],['Admin','admin']], :include_blank => true %>
+                  <br>
                   <%= f.label :password %>
-                  <%= f.password_field :password, class: 'form-control' %>
+                  <%= f.password_field :user_password_digest, class: 'form-control' %>
                   
                   <%= f.label :password_confirmation, "Confirmation" %>
                   <%= f.password_field :password_confirmation, class: 'form-control' %>

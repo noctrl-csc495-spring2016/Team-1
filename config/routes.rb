@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get    'home/home2'           => 'pages#home2'
     get    'home/home3'           => 'pages#home3'
 
-  get    'users/admin1'
+  get    'users/index'
   get    'users/new'
   get    'users/edit'
   

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     
   #Default action for the admin home page.  Puts paginated list of users in
   #@users.
-  def admin1
+  def index
     @users = User.paginate(page: params[:page])
   end
   

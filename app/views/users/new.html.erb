@@ -15,6 +15,8 @@
                 <!---Create form for adding new user--->
                 <%= form_for(@user) do |f| %>
                   
+                  <%= render 'layouts/flash_message' %>
+                  
                   <%= f.label :user_id %>
                   <%= f.text_field :user_id, class: 'form-control' %>
                   
@@ -24,10 +26,12 @@
                   <%= f.label :user_email %>
                   <%= f.email_field :user_email, class: 'form-control' %>
                   
+                  <br>
+                  
                   <%= f.label :permission_level %>
                   
                   <!---Set drop-down options and values per the array--->
-                  <%= f.select :permission_level, User.permission_levels.keys.to_a %>
+                  <%= f.select :permission_level, User.permission_levels.keys.to_a, :include_blank => true %>
                   <br>
                   <%= f.label :password %>
                   <%= f.password_field :user_password_digest, class: 'form-control' %>
@@ -35,7 +39,7 @@
                   <%= f.label :password_confirmation, "Confirmation" %>
                   <%= f.password_field :password_confirmation, class: 'form-control' %>
                   
-                  <%= f.submit "Create Account", class: 'btn btn-success btn-wide extra-right-margin' %>
+                  <%= f.submit "Create Account", class: 'btn btn-success btn-wide' %>
                   <%= link_to "Cancel", users_index_path, class: 'btn btn-danger btn-wide' %>
                 <% end %>
 

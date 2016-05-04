@@ -24,7 +24,7 @@
                   <%= f.email_field :user_email, class: 'form-control' %>
                   
                   <%= f.label :permission_level %>
-                  <%= f.select :permission_level, [['Entry','entry'],['Standard','standard'],['Admin','admin']], :include_blank => true %>
+                  <%= f.select :permission_level, User.permission_levels.keys.to_a %>
                   <br>
                   <%= f.label :password %>
                   <%= f.password_field :user_password_digest, class: 'form-control' %>

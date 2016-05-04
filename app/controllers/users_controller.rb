@@ -28,6 +28,7 @@ class UsersController < ApplicationController
   end
   
   def update
+    @user = User.find(params[:id])
     if params[:user][:user_password_digest].empty?
       @user.errors.add(:user_password_digest, "can't be empty")
       render 'edit'

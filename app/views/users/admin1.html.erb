@@ -33,9 +33,11 @@
                             <th>Name</th>
                             <th>ID</th>
                             <th>Email</th>
+                            <th>Control</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <%= will_paginate %>
                         <!---Displays each user in a row--->
                         <% @users.each do |user| %>
                         <tr>
@@ -44,13 +46,18 @@
                                 <%= link_to user.user_name, edit_user_path(user) %>
                             </td>
                             <td>
-                                <%= link_to user.user_id, edit_user_path(user) %>
+                                <%= user.user_id %>
                             </td>
                             <td>
-                                <%= link_to user.user_email, edit_user_path(user) %>
+                                <%= user.user_email %>
+                            </td>
+                            <td>
+                                <%= link_to "Delete", user, method: :delete,
+                                                     data: {confirm: "Are you sure?"} %>
                             </td>
                         </tr>
                         <% end %>
+                        <%= will_paginate %>
                     </tbody>
                 </table>
             </div>

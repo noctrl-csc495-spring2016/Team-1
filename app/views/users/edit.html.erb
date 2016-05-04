@@ -21,11 +21,13 @@
             
                   <%= f.label :password_confirmation, "Confirmation" %>
                   <%= f.password_field :password_confirmation, class: 'form-control' %>
+                  <br>
+                  <%= f.label :permission_level %>
+                  <%= f.select :permission_level, User.permission_levels.keys.to_a %>
             
                   <%= f.submit "Save changes", class: "btn btn-primary" %>
-                  <%= link_to "Delete User", @user, method: :destroy,
-                                                     data: {confirm: "Are you sure?"},
-                                                     class: 'btn btn-danger btn-wide' %>
+                  <%= link_to "Cancel", users_admin1_path, class: 'btn btn-danger btn-wide' %>
+                  
                 <% end %>
                 <!---<form>
                     <h5>User ID: </h5>

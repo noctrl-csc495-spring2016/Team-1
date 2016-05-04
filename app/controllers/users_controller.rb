@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   #Default action for the admin home page.  Puts paginated list of users in
   #@users.
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.all.order("user_name ASC")
   end
   
   #Shows a user and displays the debugger in a dev environment.
@@ -22,8 +22,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Acount created!"
-      redirect_to action: 'admin1'
+      flash.now[:success] = "Acount created!"
+      redirect_to action: 'index'
     else
       render 'new'
     end
@@ -41,8 +41,8 @@ class UsersController < ApplicationController
       @user.errors.add(:user_password_digest, "can't be empty")
       render 'edit'
     elsif @user.update_attributes(user_params)
-      flash[:success] = "Password has been reset."
-      redirect_to action: 'admin1'
+      flash.now[:success] = "Profile updated."
+      redirect_to action: 'index'
     else
       render 'edit'
     end
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
-    redirect_to action: 'admin1'
+    redirect_to action: 'index'
   end
 
   private

@@ -14,7 +14,7 @@
                 
                 <!---Create a form to update the user's password and permission level--->
                 <%= form_for(@user) do |f| %>
-            
+                
                   <h5>User Name: <%= @user.user_name %></h5>
                   <h5>User ID: <%= @user.user_id %></h5>
             
@@ -30,7 +30,7 @@
                   <%= f.select :permission_level, User.permission_levels.keys.to_a %>
             
                   <%= f.submit "Save changes", class: "btn btn-primary" %>
-                  <%= link_to "Cancel", users_admin1_path, class: 'btn btn-danger btn-wide' %>
+                  <%= link_to "Cancel", users_index_path, class: 'btn btn-danger btn-wide' %>
                   
                 <% end %>
 

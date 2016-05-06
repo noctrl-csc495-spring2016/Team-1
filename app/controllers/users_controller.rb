@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   #Default action for the admin home page.  Puts paginated list of users in
   #@users.
   def index
-    @users = User.all.order("user_name ASC")
+    @users = User.all.order("UPPER(user_name)")
   end
   
   #Shows a user and displays the debugger in a dev environment.
@@ -62,7 +62,7 @@ class UsersController < ApplicationController
     
     elsif @user.update_attributes(user_params)
       flash.now[:success] = "Profile updated."
-      redirect_to action: 'index'
+      render 'index'
     else
       render 'edit'
     end

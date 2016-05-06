@@ -23,6 +23,7 @@ class PagesController < ApplicationController
   # /admin/admin1
   def admin1
     render 'pages/admin/admin1.html'
+    redirect_to :controller => 'users', :action => 'show'
   end
   
   # /admin/admin2

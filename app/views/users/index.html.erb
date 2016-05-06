@@ -18,7 +18,7 @@
         <br />
         <div class="row">
             <div class="col-xs-5 col-xs-offset-1">
-                <a href="/admin/admin2">
+                <a href="/users/new">
                     <btn class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add New User</btn>
                 </a>
             </div>
@@ -30,23 +30,35 @@
                 <table class="table table-hover table-striped">
                     <thead>
                         <tr>
-                            <th>id</th>
-                            <th>email</th>
+                            <th>Name</th>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Control</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr onclick="window.document.location='/admin/admin3';">
-                            <td>profbill</td>
-                            <td>wtkrieger@noctrl.edu</td>
-                        </tr>
+                        <!---Displays each user in a row--->
+                        <%= render 'layouts/flash_message' %>
+                        
+                        <% @users.each do |user| %>
                         <tr>
-                            <td>dreamh</td>
-                            <td>jb@yahoo.com</td>
+                            <!---Each user's name and email link to their edit page--->
+                            <td>
+                                <%= link_to user.user_name, edit_user_path(user) %>
+                            </td>
+                            <td>
+                                <%= user.user_id %>
+                            </td>
+                            <td>
+                                <%= user.user_email %>
+                            </td>
+                            <td>
+                                <%= link_to "Delete", user, method: :delete,
+                                                     data: {confirm: "Are you sure?"} %>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>Carrie</td>
-                            <td>cp@sharingconnections.com</td>
-                        </tr>
+                        <% end %>
+                        
                     </tbody>
                 </table>
             </div>

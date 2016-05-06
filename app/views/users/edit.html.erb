@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<head>
+</head>
+
+<body>
+    <%= render 'layouts/navbar' %>
+
+    <!-- Begin main content -->
+    <div class="container">
+        <div class="row">
+            <div class='col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 well'>
+                <h4 class="text-center">Manage User</h4>
+                
+                <!---Create a form to update the user's password and permission level--->
+                <%= form_for(@user) do |f| %>
+                  <%= render 'layouts/flash_message' %>
+                  
+                  <h5>User Name: <%= @user.user_name %></h5>
+                  <h5>User ID: <%= @user.user_id %></h5>
+                  
+                  <%= f.label :permission_level %>
+                  
+                  <!---Set drop-down options and values per the array--->
+                  <%= f.select :permission_level, User.permission_levels.keys.to_a, :include_blank => true %>
+                
+                  <br>
+                
+                  <%= f.label :password %>
+                  <%= f.password_field :user_password_digest, class: 'form-control' %>
+            
+                  <%= f.label :password_confirmation, "Confirmation" %>
+                  <%= f.password_field :password_confirmation, class: 'form-control' %>
+                  
+                  <br>
+            
+                  <%= f.submit "Save changes", class: "btn btn-primary" %>
+                  <%= link_to "Cancel", users_index_path, class: 'btn btn-danger btn-wide' %>
+                  
+                <% end %>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

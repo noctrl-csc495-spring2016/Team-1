@@ -21,7 +21,10 @@ class UsersController < ApplicationController
   #then displays the new list of users.
   def create
     @user = User.new(user_params)
-    if @user.valid? && @user.save
+    if params[:user][:user_password_digest] != params[:user][:password_confirmation]
+      flash.now[:danger] = "Password and Confirmation must match!"
+      render 'new'
+    elsif @user.valid? && @user.save
       flash.now[:success] = "Acount created!"
       render 'index'
     else
@@ -44,6 +47,12 @@ class UsersController < ApplicationController
       @user.errors.add(:user_password_digest, "can't be empty")
       flash.now[:danger] = "Password can't be empty!"
       render 'edit'
+      
+    #If the password confirmation does not match the password
+    elsif params[:user][:user_password_digest] != params[:user][:password_confirmation]
+      flash.now[:danger] = "Password and Confirmation must match!"
+      render 'edit'
+      
       
     #If the permission level was blank
     elsif params[:user][:permission_level].empty?

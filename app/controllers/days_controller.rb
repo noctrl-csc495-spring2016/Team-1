@@ -16,7 +16,6 @@ class DaysController < ApplicationController
   def show
     #get the day
     @day = Day.find_by_id(params[:id])
-    
     #set up pagination
     @pickups = Pickup.where(:day_id => @day.id.to_s)
     if(@pickups.empty?)

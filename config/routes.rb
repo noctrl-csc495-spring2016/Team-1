@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   get    'schedule/schedule3'     => 'pages#schedule3'
   
   get    'template'               => 'pages#template'
+  
+  resources :pickups
 end

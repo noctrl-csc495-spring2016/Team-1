@@ -1,0 +1,118 @@
+<!-- Homescreen 2 - Add Donor Form-->
+<html>
+
+<head>
+</head>
+
+<body>
+   
+    <!--Main Content-->
+    <%= render 'layouts/navbar' %>
+    <div class="container white-container">
+        <%= render 'layouts/flash_message' %>
+        <div class="row">
+            <div class="col-xs-6">
+                <h3> Donor Information</h3>
+            </div>
+            <div class="col-xs-6">
+                <h4> Please enter the number of items to be donated, and a brief description of them.</h4>
+            </div>
+        </div>
+        
+        <div class="row">
+            <%= form_for(@pickup) do |f| %>
+            <div class="col-xs-6">
+                <!--Donor Info -->
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <label for="fistName">First Name </label>
+                            <!--UX originally did not have donor_first_name and donor_last_name separate-->
+                            <!--Therefore we've added donor first name field in database for this form-->
+                            <%= f.text_field :donor_first_name, class: 'form-control' %>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <label for="lastName">Last Name
+                                <span style="color:red">*</span>
+                            </label>
+                            <%= f.text_field :donor_name, class: 'form-control' %>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNum">Phone Number
+                        <span style="color:red">*</span>
+                    </label>
+                    <%= f.text_field :donor_phone, class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email </label>
+                    <%= f.text_field :donor_email, class: 'form-control' %>
+                </div>
+                <h3> Pickup Address<!--<red class="red">*</red>--><span style="color:red">*</span></h3>
+                <div class="form-group">
+                    <label for="line1">Line 1 </label>
+                    <%= f.text_field :donor_address_line1, class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                    <label for="line2">Line 2</label>
+                    <%= f.text_field :donor_address_line2, class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <label for="city">City </label>
+                            <%= f.text_field :donor_city, class: 'form-control' %>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <label for="zipCode">Zip Code </label>
+                            <%= f.text_field :donor_zip, class: 'form-control' %>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Address-->
+                <div class="form-group">
+                    <label for="userType">Dwelling Type </label>
+                     <%=f.select(:donor_dwelling_type, options_for_select([['Current Residence','Current Residence'], ['Selling/Moving Home','Selling/Moving Home'], ['Storage Facility','Storage Facility'], ['Other','Other']]),{},:class => "form-control")%>
+                </div>
+               
+            </div>
+            <!--END DONOR INFO-->
+
+            <!-- Item Info -->
+            <div class="col-xs-6">
+                <!--Number of Items-->
+                <div class="form-group">
+                    <label for="numItems">Number of Items: </label>
+                    <%=f.select(:number_of_items, options_for_select([['1',1], ['2',2], ['3',3], ['4',4], ['5',5], ['6',6], ['7',7], ['8',8], ['9',9], ['10+',10]]),{},:class => "form-control")%>
+                </div>
+
+                <!-- Item & Donor Notes-->
+                <!-- Max text input length 300 chars -->
+                <div class="form-group">
+                    <label for="itemNotes">Item Notes </label>
+                    <%= text_area(:pickup, :item_description, :cols => 150, :rows => 5, :class => 'form-control custom-control') %>
+                </div>
+                <div class="form-group">
+                    <label for="donorNotes">Donor Notes </label>
+                     <%= text_area(:pickup, :other_notes, :cols => 150, :rows => 5, :class => 'form-control custom-control') %>
+                </div>
+
+                <!-- Form submit-->
+                <div class="padding-top">
+                    <div class="form-group">
+                        <%= f.submit "Add Pickup", class: "btn btn-success btn-wide extra-right-margin" %>
+                        <a href="/pickups">
+                            <btn class="btn btn-danger btn-wide">Cancel</btn>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- END ITEM INFO-->
+         <%end%>
+         </div>
+    </div>
+    <!-- END MAIN CONTENT -->
+</body>
+</html>

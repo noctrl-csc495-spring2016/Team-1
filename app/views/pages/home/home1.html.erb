@@ -42,6 +42,16 @@
                             <td>7 items</td>
                             <td>Lightly used dining table, 6 chairs in good condition</td>
                         </tr>
+                        <%@pickups = Pickup.all%>
+                        <%@pickups.each do |pickup|%>
+                        
+                            <tr>
+                                <td><%=pickup.donor_name%></td>
+                                <td>Naperville</td>
+                                <td><%=pickup.number_of_items%></td>
+                                <td>Lightly used dining table, 6 chairs in good condition</td>
+                            </tr>
+                        <%end%> 
                         <tr>
                             <td>Dust</td>
                             <td>Lisle</td>
@@ -71,6 +81,12 @@
                             <td>Bolingbrook</td>
                             <td>6 items</td>
                             <td>White bookshelf, kitchen table, 4 chairs (with table), bro...</td>
+                        </tr>
+                        <tr>
+                            <td>Prucha</td>
+                            <td>Naperville</td>
+                            <td>1 item</td>
+                            <td>TV</td>
                         </tr>
                     </tbody>
                 </table>

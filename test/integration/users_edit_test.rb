@@ -24,15 +24,19 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   test "successful edit" do
     get edit_user_path(@user)
     assert_template 'users/edit'
-    password = "fusbar"
-    confirm = "fusbar"
+    password = 'foobar'
+    confirm = 'foobar'
+    level = 'entry'
     patch user_path(@user),
-    user: { :user_password_digest => password,
-            :password_confirmation => confirm,
-            :permission_level => "entry" }
-            
+    user: { user_password_digest: password,
+            password_confirmation: confirm,
+            permission_level: level }
+    
+    assert_not flash.empty?
     @user.reload
     assert_equal password, @user.user_password_digest
+    assert_equal level, @user.permission_level
+    assert_redirected_to users_index_path
   end
   
   test "unsuccessful edit" do
@@ -41,6 +45,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     patch user_path(@user), user: { permission_level: "",
                                     user_password_digest: "foo",
                                     password_confirmation: "bar" }
+    assert_not flash.empty?
     assert_template 'users/edit'
   end
 end

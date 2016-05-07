@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     
-  #Default action for the admin home page.  Puts paginated list of users in
+  #Default action for the admin home page.  Puts ordered list of users in
   #@users.
   def index
     @users = User.all.order("UPPER(user_name)")
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       render 'new'
     elsif @user.valid? && @user.save
       flash.now[:success] = "Acount created!"
-      render 'index'
+      redirect_to users_index_path
     else
       flash.now[:danger] = "One or more values was left blank!"
       render 'new'
@@ -60,9 +60,9 @@ class UsersController < ApplicationController
       flash.now[:danger] = "Permission level required!"
       render 'edit'
     
-    elsif @user.update_attributes(user_params)
+    elsif @user.update_attribute(:user_password_digest, params[:user][:user_password_digest]) && @user.update_attribute(:permission_level, params[:user][:permission_level])
       flash.now[:success] = "Profile updated."
-      render 'index'
+      redirect_to users_index_path
     else
       render 'edit'
     end

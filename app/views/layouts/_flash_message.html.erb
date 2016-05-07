@@ -1,3 +1,5 @@
+<!--Render flash messages-->
+<!--More information can be found from http://stackoverflow.com/questions/9390778/best-practice-method-of-displaying-flash-messages-->
 <div id='flash-messages'>
 <% flash.each do |message_type, message| %>
   <div class="alert alert-<%= message_type %>"><%= message %></div>

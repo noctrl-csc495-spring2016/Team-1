@@ -20,5 +20,9 @@ Rails.application.routes.draw do
   
   get    'template'               => 'pages#template'
   
+
   resources :users
+
+  resources :pickups
+
 end

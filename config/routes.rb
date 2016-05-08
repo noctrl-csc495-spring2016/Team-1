@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-    root                               'pages#index'
+    root                               'auth#new'
   get    'about'                  => 'pages#about'
 
     get    '/home1'                  => 'pages#home1'
@@ -20,9 +20,12 @@ Rails.application.routes.draw do
   
   get    'template'               => 'pages#template'
   
+  get    'login'                  => 'auth#new'
+  post   'login'                  => 'auth#create'
+  delete 'logout'                 => 'auth#destroy'
+  
 
   resources :users
-
   resources :pickups
 
 end

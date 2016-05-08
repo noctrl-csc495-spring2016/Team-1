@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  
+  before_action :user_signed_in
     
   #Default action for the admin home page.  Puts ordered list of users in
   #@users.

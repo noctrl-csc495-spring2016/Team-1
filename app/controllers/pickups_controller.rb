@@ -69,6 +69,7 @@ def update
         if @pickup.day_id != nil                                    #If the pickup was already scheduled, 
             @myDay = Day.find_by id: @pickup.day_id                 #subtract 1 from the number of pickups for that day
             @myDay.number_of_pickups -= 1
+            @pickup.day_id = nil                                    #Also set pickup's day_id to null
             @myDay.save
         end
         @pickup.rejected = true                                     #Set rejected to true and update the rejected params

@@ -1,0 +1,29 @@
+<%=render 'layouts/navbar' %>
+<div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-4 well">
+                <h2 class="text-center">Truck Reports</h2>
+                <p class="text-center">Select a pickup date below to export
+                the daily truck report or MapQuest route information.</p>
+                <br>
+      <div class="form-group">
+      Pickup Day:
+      <%= select_tag 'pickupday', options_for_select(@days.collect{|d| [d.date.strftime("%b %-d"), d.date]}),
+      class: "form-control" %>
+      </div>
+      <br>
+      <div class="form-group">
+        <%= check_box_tag 'pdf', 'pdf', true %>
+        <%= label_tag 'pdf', '&nbsp;Truck Report'.html_safe %>
+        <br>
+        <%= check_box_tag 'csv', 'csv', true %>
+        <%= label_tag 'csv', '&nbsp;MapQuest Route'.html_safe %>
+      </div>
+      <br>
+      <div class="form-group">
+      <%=button_tag 'Export', type: 'button', id: 'exportButton', class: 'btn btn-success btn-wide extra-right-margin'  %>
+      <%= link_to 'Cancel', '/reports', class: 'btn btn-danger btn-wide'%>
+     </div>
+    </div>
+  </div>
+</div>

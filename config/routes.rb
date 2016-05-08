@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   root                               'pages#index'
   get    'about'                  => 'pages#about'
 
@@ -14,12 +15,13 @@ Rails.application.routes.draw do
   get    'reports/report2'        => 'pages#report2'
   get    'reports/report3'        => 'pages#report3'
   
-  #pickup page for csv export
-  get    'pickup.csv'              => 'pages#pickup'
-  
   get    'schedule/schedule1'     => 'pages#schedule1'
   get    'schedule/schedule2'     => 'pages#schedule2'
   get    'schedule/schedule3'     => 'pages#schedule3'
+  
+  #new report pages
+  get 'reports/donor'             => 'reports#donor'
+  get 'reports/truck'             => 'reports#truck'
   
   get    'template'               => 'pages#template'
 end

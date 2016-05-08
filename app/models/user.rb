@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   before_save   :downcase_email
-  
   validates :user_id, presence: true
   validates :user_name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -8,7 +7,6 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :user_password_digest, presence: true, length: { minimum: 6 }
-  #validates :user_password_confirmation, presence: true, length: { minimum: 6 }
   validates :permission_level, presence: true
   
   #Enum array for the Select element options for creating/updating users.

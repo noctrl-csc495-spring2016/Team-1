@@ -15,19 +15,18 @@ module AuthHelper
     def is_user_admin
         if !is_user_admin?
             flash[:danger] = "Admin access required."
-            redirect_to pickups_path
+            redirect_to 'home/home1'
         end
     end
     
     def admin_or_standard
         if !is_user_admin? && !is_user_reg?
             flash[:danger] = "Permission denied."
-            redirect_to pickups_path
+            redirect_to 'home/home1'
         end
     end
     
-    # Redirects the user to the login page if they are not logged in.
-    #  This function is intended to be used as a before_action callback.
+    # Go back to the initial sign on page
     def user_logged_in
         if user_active.nil?
             flash[:danger] = "User has not been logged in."
@@ -35,13 +34,10 @@ module AuthHelper
         end
     end
     
-    # This will remove the user_id from the session. Redirecting to the
-    #  home (login) page is left as a task for the calling code.
+    # Destroys the active users' session, logging them out
     def log_out
-        # Delete the user_id token from the session
+        
         session.delete(:user_id)
-        # Set the current user to nil, so that nothing else operates on the
-        #  (now mistaken) assumption that the user is still logged in.
         @user_active = nil
     end
     

@@ -3,10 +3,12 @@ require 'test_helper'
 
 class PickupsControllerTest < ActionController::TestCase
 
+#Set pickup to the first pickup in the .yml
 setup do 
   @pickup = Pickup.first
 end
 
+#Test the various conroller functions and templates associated with them
 test "should get pickups" do
   get :index
   assert_response :success

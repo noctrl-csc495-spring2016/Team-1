@@ -1,6 +1,10 @@
 require 'test_helper'
 
+#Validation tests for pickups
+#For a pickup to be vailid, it must have a donor name, phone, city, address line 1, and zip
 class PickupTest < ActiveSupport::TestCase
+  
+  #Create pickup with bare minimum requirements
   def setup
     @pickup = Pickup.new(donor_name: "Prucha", donor_phone: "(630) 555-5555", donor_city: "Naperville", donor_address_line1: "555 Drury Ln", donor_zip: "60540")
   end
@@ -9,6 +13,7 @@ class PickupTest < ActiveSupport::TestCase
     assert @pickup.valid?
   end
   
+  #Test for missing requirements
   test "donor_phone should be present" do
     @pickup.donor_phone = "  "
     assert_not @pickup.valid?

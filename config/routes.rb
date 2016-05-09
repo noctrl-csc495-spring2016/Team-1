@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-    root                               'pages#index'
+  
+  root                               'pages#index'
   get    'about'                  => 'pages#about'
 
-    get    '/home1'                  => 'pages#home1'
+    get    '/home1'               => 'pages#home1'
     get    'home/home2'           => 'pages#home2'
     get    'home/home3'           => 'pages#home3'
 
@@ -17,6 +18,10 @@ Rails.application.routes.draw do
   get    'schedule/schedule1'     => 'pages#schedule1'
   get    'schedule/schedule2'     => 'pages#schedule2'
   get    'schedule/schedule3'     => 'pages#schedule3'
+  
+  #new report pages
+  get 'reports/donor'             => 'reports#donor'
+  get 'reports/truck'             => 'reports#truck'
   
   get    'template'               => 'pages#template'
   

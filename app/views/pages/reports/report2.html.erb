@@ -12,24 +12,24 @@
                 <form>
                     <div class="form-group">
                         Month:
-                        <select class="extra-right-margin form-control">
-                            <option value="January">January</option>
-                            <option value="February">February</option>
-                            <option value="March">March</option>
-                            <option value="April">April</option>
-                            <option value="May">May</option>
-                            <option value="June">June</option>
-                            <option value="July">July</option>
-                            <option value="August">August</option>
-                            <option value="September">September</option>
-                            <option value="October">October</option>
-                            <option value="November">November</option>
-                            <option value="December">December</option>
+                        <select name = "month" class="extra-right-margin form-control">
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
                         </select>
                     </div>
                     <div class="form-group">
                         Year:
-                        <select class="form-control">
+                        <select name = "year" class="form-control">
                             <option value="2016">2016</option>
                             <option value="2015">2015</option>
                             <option value="2014">2014</option>
@@ -39,11 +39,11 @@
 
                     <div class="form-group">
                         Save As:
-                        <input type="text" class="form-control" placeholder="example.csv">
+                        <input name = "fileName" type="text" class="form-control" placeholder="example.csv">
                     </div>
                     <div class="form-group">
-                        <a href="/reports/report1">
-                            <btn class="btn btn-success btn-wide extra-right-margin">OK</btn>
+                        <a href="/donor.csv">
+                            <btn class="btn btn-success btn-wide extra-right-margin">Export</btn>
                         </a>
                         <a href="/reports/report1">
                             <btn class="btn btn-danger btn-wide">Cancel</btn>

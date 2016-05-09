@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
     
-  #Default action for the admin home page.  Puts paginated list of users in
+  #Default action for the admin home page.  Puts ordered list of users in
   #@users.
   def index
-    @users = User.all.order("user_name ASC")
+    @users = User.all.order("UPPER(user_name)")
   end
   
   #Shows a user and displays the debugger in a dev environment.
@@ -21,9 +21,12 @@ class UsersController < ApplicationController
   #then displays the new list of users.
   def create
     @user = User.new(user_params)
-    if @user.valid? && @user.save
+    if params[:user][:user_password_digest] != params[:user][:password_confirmation]
+      flash.now[:danger] = "Password and Confirmation must match!"
+      render 'new'
+    elsif @user.valid? && @user.save
       flash.now[:success] = "Acount created!"
-      render 'index'
+      redirect_to users_index_path
     else
       flash.now[:danger] = "One or more values was left blank!"
       render 'new'
@@ -45,15 +48,21 @@ class UsersController < ApplicationController
       flash.now[:danger] = "Password can't be empty!"
       render 'edit'
       
+    #If the password confirmation does not match the password
+    elsif params[:user][:user_password_digest] != params[:user][:password_confirmation]
+      flash.now[:danger] = "Password and Confirmation must match!"
+      render 'edit'
+      
+      
     #If the permission level was blank
     elsif params[:user][:permission_level].empty?
       @user.errors.add(:permission_level, "can't be blank")
       flash.now[:danger] = "Permission level required!"
       render 'edit'
     
-    elsif @user.update_attributes(user_params)
+    elsif @user.update_attribute(:user_password_digest, params[:user][:user_password_digest]) && @user.update_attribute(:permission_level, params[:user][:permission_level])
       flash.now[:success] = "Profile updated."
-      redirect_to action: 'index'
+      redirect_to users_index_path
     else
       render 'edit'
     end

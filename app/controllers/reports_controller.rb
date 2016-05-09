@@ -18,17 +18,9 @@ class ReportsController < ApplicationController
         
         @fileName = params[:fileName]
         @pickUpDay = params[:pickupday]
-        @formatBack = params[:format]
-        if @formatBack == "csv"
-          p "csv"
-          format.csv { send_data @pickups.to_route_csv(@pickupday, @fileName) }
-        elseif @formatBack == "pdf" #doing elseif to prevent someone from asking for pdf AND csv
-          p "pdf"
-          format.pdf { send_data @pickups.to_reports_pdf, filename: "pickups.pdf", type: "application/pdf" }
-        else
-          format.html
-          p "html"
-        end
+        format.csv { render text: @pickups.to_route_csv(@pickupday, @fileName) }
+        format.pdf { send_data @pickups.to_reports_pdf, filename: "pickups.pdf", type: "application/pdf" }
+        format.html
     end
   end
 end

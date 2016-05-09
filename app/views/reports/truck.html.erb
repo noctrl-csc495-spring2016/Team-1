@@ -17,7 +17,7 @@
         <br>
         <%= radio_button_tag(:format, "csv") %>
         <%= label_tag 'csv', '&nbsp;MapQuest Route'.html_safe %>
-      <br>
+      <br><br>
       <%=button_tag 'Export', type: 'submit', id: 'exportButton', class: 'btn btn-success btn-wide extra-right-margin'  %>
       <%= link_to 'Cancel', '/reports', class: 'btn btn-danger btn-wide'%>
      <% end %>

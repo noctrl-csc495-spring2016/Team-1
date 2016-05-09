@@ -19,6 +19,7 @@ gem 'sdoc',                    '0.4.0', group: :doc
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'prawn'
+gem 'prawn-table',             '0.2.2'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'

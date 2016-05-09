@@ -1,6 +1,7 @@
 class Pickup < ActiveRecord::Base
   belongs_to :follower, class_name: "Day"
   validates_presence_of :donor_phone, :donor_name, :donor_address_line1, :donor_zip, :donor_city
+  require 'prawn/table'
   
   #csv for mapquest -- Not sure if RR made this or if someone else needs the
   #function. RR left in and will evaluate later
@@ -25,8 +26,8 @@ class Pickup < ActiveRecord::Base
               'E-MAIL', 'DATE DONATED', 'ITEMS DONATED']
       all.each do |pickup|
         #if their pickup day is the same as the one being pulled...
-        pickUpDay = pickup.pickup_time
-        if pickup.pickup_time == pickUpDay 
+        #pickUpDay = pickup.pickup_time
+        #if pickup.pickup_time == pickUpDay 
           #... add them to the file - more info on csv stuff at http://www.sitepoint.com/guide-ruby-csv-library-part-2/
           #we've got some parsing and concatination so let's do it before we add it.
           #firstName = pickup.donor_name.to_s.split(' ')[0]
@@ -34,7 +35,7 @@ class Pickup < ActiveRecord::Base
           fullAddress = "#{pickup.donor_address_line1}\n#{pickup.donor_address_line2}"
           #spouse is not in the database. Need for sprint 2 or 3
           csv << [pickup.donor_first_name, "", lastName, fullAddress, pickup.donor_city, "Illinois", pickup.donor_zip, pickup.donor_email, pickup.pickup_time, pickup.item_description]
-        end
+        #end
       end
     end
   end
@@ -68,7 +69,6 @@ class Pickup < ActiveRecord::Base
     #the best, just speficy gem version before publishing
     dataInTable = [["" , "Name/Contact", "Address", "Donor Items/Notes"]]
     all.each do |pickup|
-      #Sorry Bill, this isn't going to fit on the page well.
       dataInTable += [[i, "#{pickup.donor_name}\n#{pickup.donor_phone}", 
         "#{pickup.donor_address_line1}\n#{pickup.donor_address_line2}\n#{pickup.donor_city}",
         "#{pickup.item_description}\n#{pickup.other_notes}\n#{pickup.donor_email}"]]

@@ -13,16 +13,21 @@ class ReportsController < ApplicationController
 
   def truck
      @pickups = Pickup.order(:day_id)
-     
+    
     respond_to do |format|
-        format.html
+        
         @fileName = params[:fileName]
         @pickUpDay = params[:pickupday]
-        if params[:csv] == true
+        @formatBack = params[:format]
+        if @formatBack == "csv"
+          p "csv"
           format.csv { send_data @pickups.to_route_csv(@pickupday, @fileName) }
-        end
-        if params[:pdf] == true
+        elseif @formatBack == "pdf" #doing elseif to prevent someone from asking for pdf AND csv
+          p "pdf"
           format.pdf { send_data @pickups.to_reports_pdf, filename: "pickups.pdf", type: "application/pdf" }
+        else
+          format.html
+          p "html"
         end
     end
   end

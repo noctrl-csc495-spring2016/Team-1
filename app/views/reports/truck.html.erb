@@ -7,23 +7,20 @@
                 the daily truck report or MapQuest route information.</p>
                 <br>
       <div class="form-group">
+      <%= form_tag('/reports/truck', :method => 'get') do %>
       Pickup Day:
-      <%= select_tag 'pickupday', options_for_select(@days.collect{|d| [d.date.strftime("%b %-d"), d.date]}),
-      class: "form-control" %>
+      <%= collection_select(:day, :date, Day.all, :date, :collect) %>
       </div>
       <br>
-      <div class="form-group">
-        <%= check_box_tag 'pdf', 'pdf', true %>
+        <%= radio_button_tag(:format, "pdf") %>
         <%= label_tag 'pdf', '&nbsp;Truck Report'.html_safe %>
         <br>
-        <%= check_box_tag 'csv', 'csv', true %>
+        <%= radio_button_tag(:format, "csv") %>
         <%= label_tag 'csv', '&nbsp;MapQuest Route'.html_safe %>
-      </div>
       <br>
-      <div class="form-group">
-      <%=button_tag 'Export', type: 'button', id: 'exportButton', class: 'btn btn-success btn-wide extra-right-margin'  %>
+      <%=button_tag 'Export', type: 'submit', id: 'exportButton', class: 'btn btn-success btn-wide extra-right-margin'  %>
       <%= link_to 'Cancel', '/reports', class: 'btn btn-danger btn-wide'%>
-     </div>
+     <% end %>
     </div>
   </div>
 </div>

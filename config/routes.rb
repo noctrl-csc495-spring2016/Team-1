@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root                               'pages#index'
   get    'about'                  => 'pages#about'
 
-    get    '/home1'               => 'pages#home1'
+    get    'home/home1'               => 'pages#home1'
     get    'home/home2'           => 'pages#home2'
     get    'home/home3'           => 'pages#home3'
 

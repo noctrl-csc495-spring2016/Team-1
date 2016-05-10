@@ -26,16 +26,18 @@ class Pickup < ActiveRecord::Base
               'E-MAIL', 'DATE DONATED', 'ITEMS DONATED']
       all.each do |pickup|
         #if their pickup day is the same as the one being pulled...
-        #pickUpDay = pickup.pickup_time
-        #if pickup.pickup_time == pickUpDay 
+        pickUpDay = pickup.pickup_time
+        pickYear = pickUpDay[0] + pickUpDay[1] + pickUpDay[2] + pickUpDay[3]
+        pickMon = pickUpDay[5] + pickUpDay[6]
+        p month
+        if month == pickMon && pickYear == year 
           #... add them to the file - more info on csv stuff at http://www.sitepoint.com/guide-ruby-csv-library-part-2/
           #we've got some parsing and concatination so let's do it before we add it.
-          #firstName = pickup.donor_name.to_s.split(' ')[0]
           lastName = pickup.donor_name.to_s.split(' ')[1]
-          fullAddress = "#{pickup.donor_address_line1}\n#{pickup.donor_address_line2}"
+          fullAddress = "#{pickup.donor_address_line1} #{pickup.donor_address_line2}"
           #spouse is not in the database. Need for sprint 2 or 3
           csv << [pickup.donor_first_name, "", lastName, fullAddress, pickup.donor_city, "Illinois", pickup.donor_zip, pickup.donor_email, pickup.pickup_time, pickup.item_description]
-        #end
+        end
       end
     end
   end

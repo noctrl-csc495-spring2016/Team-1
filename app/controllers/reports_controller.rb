@@ -5,8 +5,14 @@ class ReportsController < ApplicationController
     respond_to do |format|
         format.html
         @fileName = params[:filename]
-        @month = params[:month]
-        @year = params[:year]
+        @date = params[:date]
+        #I have no idea why I can't say params[:date]['month'], heres the work around
+        @arr = @date.to_s.split(",")
+        @month = @arr[0].split("\"")[3]
+        if @month.length == 1
+          @month.insert(0,'0')
+        end
+        @year = @arr[1].split("\"")[3]
         format.csv { send_data @pickups.to_donor_csv(@month, @year, @fileName) }
     end
   end

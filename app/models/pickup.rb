@@ -29,7 +29,6 @@ class Pickup < ActiveRecord::Base
         pickUpDay = pickup.pickup_time
         pickYear = pickUpDay[0] + pickUpDay[1] + pickUpDay[2] + pickUpDay[3]
         pickMon = pickUpDay[5] + pickUpDay[6]
-        p month
         if month == pickMon && pickYear == year 
           #... add them to the file - more info on csv stuff at http://www.sitepoint.com/guide-ruby-csv-library-part-2/
           #we've got some parsing and concatination so let's do it before we add it.
@@ -49,11 +48,12 @@ class Pickup < ActiveRecord::Base
       #make the headers for the file
       csv << ['Street', 'City', 'State', 'Zip', 'Notes']
       all.each do |pickup|
+        p pickup.pickup_time.to_s == pickUpDay
         #if their pickup day is the same as the one being pulled...
-        if pickup.pickup_time == pickUpDay 
+        #if pickup.pickup_time.to_s == pickUpDay 
            #... add them to the file - need to add state and country.
           csv << [pickup.donor_address_line1, pickup.donor_city, "IL", pickup.donor_zip, pickup.item_description]
-        end
+        #end
       end
     end
   end

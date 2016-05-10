@@ -18,12 +18,11 @@ class ReportsController < ApplicationController
   end
 
   def truck
-     @pickups = Pickup.order(:day_id)
-    
+    @pickups = Pickup.order(:day_id)
     respond_to do |format|
-        
         @fileName = params[:fileName]
-        @pickUpDay = params[:pickupday]
+        @pickUpDay = params[:day].to_s.split("\"")[3]
+        p @pickUpDay
         format.csv { render text: @pickups.to_route_csv(@pickupday, @fileName) }
         format.pdf { send_data @pickups.to_reports_pdf, filename: "pickups.pdf", type: "application/pdf" }
         format.html

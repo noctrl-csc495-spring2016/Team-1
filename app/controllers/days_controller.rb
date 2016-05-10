@@ -55,3 +55,6 @@ class DaysController < ApplicationController
     def user_params
     end
 end
+  before_action :user_signed_in
+  before_action :admin_or_standard
+end

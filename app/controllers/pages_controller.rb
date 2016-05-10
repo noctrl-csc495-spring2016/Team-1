@@ -3,11 +3,11 @@ class PagesController < ApplicationController
     def index
         render 'pages/index.html.erb'
     end
-    # /home
+    # /home/home1
   def home1
-    render 'pages/home/home1.html'
+      render 'pages/home/home1.html.erb'
   end
-      # /
+    # /home/home2
   def home2
     render 'pages/home/home2.html'
   end
@@ -15,7 +15,6 @@ class PagesController < ApplicationController
   def home3
     render 'pages/home/home3.html'
   end
-  
   # /about
   def about
   end
@@ -23,6 +22,7 @@ class PagesController < ApplicationController
   # /admin/admin1
   def admin1
     render 'pages/admin/admin1.html'
+    redirect_to :controller => 'users', :action => 'show'
   end
   
   # /admin/admin2

@@ -11,4 +11,8 @@ class Day < ActiveRecord::Base
     end
     townsString = townsString.chop.strip!
   end
+  
+  def collect
+      "#{date}"
+  end
 end

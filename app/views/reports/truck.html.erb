@@ -1,0 +1,26 @@
+<%=render 'layouts/navbar' %>
+<div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-4 well">
+                <h2 class="text-center">Truck Reports</h2>
+                <p class="text-center">Select a pickup date below to export
+                the daily truck report or MapQuest route information.</p>
+                <br>
+      <div class="form-group">
+      <%= form_tag('/reports/truck', :method => 'get') do %>
+      Pickup Day:
+      <%= collection_select(:day, :date, Day.all, :date, :collect) %>
+      </div>
+      <br>
+        <%= radio_button_tag(:format, "pdf") %>
+        <%= label_tag 'pdf', '&nbsp;Truck Report'.html_safe %>
+        <br>
+        <%= radio_button_tag(:format, "csv") %>
+        <%= label_tag 'csv', '&nbsp;MapQuest Route'.html_safe %>
+      <br><br>
+      <%=button_tag 'Export', type: 'submit', id: 'exportButton', class: 'btn btn-success btn-wide extra-right-margin'  %>
+      <%= link_to 'Cancel', '/reports', class: 'btn btn-danger btn-wide'%>
+     <% end %>
+    </div>
+  </div>
+</div>

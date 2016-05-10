@@ -2,7 +2,9 @@
 
 <script>
 previousDay = null; //keeps track of previous day selected to change color
+
 $(document).ready(function() {
+
     // page is now ready, initialize the calendar...
     $('#calendar').fullCalendar({
         defaultView:"month",
@@ -21,6 +23,7 @@ $(document).ready(function() {
     $('#day_date_2i').on( "change", daySelected );
     $('#day_date_3i').on( "change", daySelected );
 });
+
 function changeDay(date, selectedByDropDown)
 {
     if(previousDay != null)
@@ -37,6 +40,7 @@ function changeDay(date, selectedByDropDown)
         
     //$("td[data-date='" + date.render('YYYY-MM-DD') + "']").css('background-color', 'grey');
 }
+
 function daySelected()//handle day selected by dropdown //doesnt work!!!
 {
     var day = moment($('#day_date_1i').val() + "-" + $('#day_date_2i').val() + "-" + $('#day_date_3i').val());
@@ -81,10 +85,8 @@ function daySelected()//handle day selected by dropdown //doesnt work!!!
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-
 </body>
 
 </html>

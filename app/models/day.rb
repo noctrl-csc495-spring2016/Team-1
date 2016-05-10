@@ -1,6 +1,6 @@
 class Day < ActiveRecord::Base
   has_many :pickups, class_name: "Pickup"
-  
+    
   #gets pickups for day and then returns unique cities
   def getTowns
     pickups = Pickup.where(:day_id => self.id.to_s)

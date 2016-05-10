@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root                               'pages#index'
   get    'about'                  => 'pages#about'
 
@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   get    'reports/report2'        => 'pages#report2'
   get    'reports/report3'        => 'pages#report3'
   
-  get    'schedule/schedule1'     => 'pages#schedule1'
-  get    'schedule/schedule2'     => 'pages#schedule2'
-  get    'schedule/schedule3'     => 'pages#schedule3'
+  get    'schedule/schedule1'     => 'days#schedule1'
+  get    'schedule/schedule2'     => 'days#schedule2'
+  get    'schedule/schedule3'     => 'days#schedule3'
   
   #new report pages
   get 'reports/donor'             => 'reports#donor'

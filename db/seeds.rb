@@ -1,7 +1,6 @@
 # Global variables
 status = "active"
 
-
 # Create some ENTRY users
 3.times do |n|
   name  = Faker::Name.name

@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root                               'pages#index'
   get    'about'                  => 'pages#about'
 
-    get    'home/home1'               => 'pages#home1'
-    get    'home/home2'           => 'pages#home2'
-    get    'home/home3'           => 'pages#home3'
+  get    'home/home1'             => 'pages#home1'
+  get    'home/home2'             => 'pages#home2'
+  get    'home/home3'             => 'pages#home3'
 
   get    'users/index'
   get    'users/new'
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   
 
   resources :users
-
+  resources :days
   resources :pickups
 
 end

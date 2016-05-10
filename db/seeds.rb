@@ -48,8 +48,44 @@ end
 end
 
 # Create a day
-  Day.create!(date:                   Date.today.to_s,
-              number_of_pickups:      3,
-              created_at:             Time.zone.now,
-              updated_at:             Time.zone.now,
-              status:                 status)
+Day.create!(date:                   Date.today.to_s,
+            number_of_pickups:      3,
+            created_at:             Time.zone.now,
+            updated_at:             Time.zone.now,
+            status:                 status)
+            
+Day.create!(date:                   Date.yesterday.to_s,
+            number_of_pickups:      0,
+            created_at:             Time.zone.now,
+            updated_at:             Time.zone.now,
+            status:                 status)
+              
+Day.create!(date:                   Date.tomorrow.to_s,
+            number_of_pickups:      0,
+            created_at:             Time.zone.now,
+            updated_at:             Time.zone.now,
+            status:                 status)
+              
+#create a pickup
+Pickup.create!(day_id:              1,
+               donor_name:          Faker::Name.name,
+               donor_address_line1: "1234 Place St",
+               donor_city:          "Naperville",
+               donor_zip:           "60565",
+               donor_phone:         "6305555555",
+               donor_email:         "hi@hi.hi",
+               number_of_items:     3,
+               pickup_time:         "1:00",
+               item_description:    "nothing")
+               
+#create a pickup
+Pickup.create!(day_id:              1,
+               donor_name:          Faker::Name.name,
+               donor_address_line1: "1234 Place St",
+               donor_city:          "Wheaton",
+               donor_zip:           "60565",
+               donor_phone:         "6305555555",
+               donor_email:         "hi@hi.hi",
+               number_of_items:     3,
+               pickup_time:         "1:00",
+               item_description:    "nothing")

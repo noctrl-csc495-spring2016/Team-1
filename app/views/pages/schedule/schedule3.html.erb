@@ -7,7 +7,7 @@
     <%= render 'layouts/navbar' %>
 
     <div class='container white-container'>
-
+        <%= render 'layouts/flash_messages' %>
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
                 <p>Select a pickup from the list below to edit.</p>
@@ -20,37 +20,23 @@
                 <table class="table table-hover table-striped table-responsive">
                     <thead>
                         <tr>
-                            <th>Last Name</th>
-                            <th>Town</th>
-                            <th>Item Quantity</th>
-                            <th>Item Description</th>
+                            <th>id</th>
+                            <th>Name</th>
+                            <th>Num Items</th>
+                            <th>Item Notes</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Krieger</td>
-                            <td>Naperville</td>
-                            <td>7 items</td>
-                            <td>Lightly used dining table, 6 chairs in good condition</td>
-                        </tr>
-                        <tr>
-                            <td>Dust</td>
-                            <td>Lisle</td>
-                            <td>3 items</td>
-                            <td>Young adult bed frame, black bookshelf, black tall dresser</td>
-                        </tr>
-                        <tr>
-                            <td>Falimirski</td>
-                            <td>Downers Grove</td>
-                            <td>12 items</td>
-                            <td>Sofa (pullout bed), 2 small lamps, 1 new towel set, 4 cha...</td>
-                        </tr>
-                        <tr>
-                            <td>Smith</td>
-                            <td>Rockford</td>
-                            <td>1 item</td>
-                            <td>Dresser brown, slight scuffing on right side</td>
-                        </tr>
+                    <tbody class="pickups">
+                        <%= will_paginate @pickups %>
+                        <% @pickups.each do |pickup| %>
+                            <tr onclick="location.href='<%= url_for pickup %>'">
+                                <td><%= pickup.day_id  %></td>
+                                <td><%= pickup.donor_name %></td>
+                                <td><%= pickup.number_of_items %></td>
+                                <td><%= pickup.item_description %></td>
+                            </tr>
+                        <% end %>      
+                        <%= will_paginate @pickups  %>
                     </tbody>
                 </table>
             </div>

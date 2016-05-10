@@ -1,135 +1,92 @@
-<!DOCTYPE html>
-
 <head>
 
+<script>
+previousDay = null; //keeps track of previous day selected to change color
+
+$(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+    $('#calendar').fullCalendar({
+        defaultView:"month",
+        
+        dayClick: function(date, jsEvent, view) {
+           
+            changeDay(date, false);
+           
+            // change the day's background color just for fun
+            $(this).css('background-color', 'grey');
+            previousDay = $(this);
+        }
+    })
+    //add listeners to dropdowns
+    $('#day_date_1i').on( "change", daySelected );
+    $('#day_date_2i').on( "change", daySelected );
+    $('#day_date_3i').on( "change", daySelected );
+});
+
+function changeDay(date, selectedByDropDown)
+{
+    if(previousDay != null)
+    {
+        previousDay.css('background-color', 'white');
+    }
+    
+    if(selectedByDropDown == false)
+    {
+        $('#day_date_3i').val(date.format('D')).change();
+        $('#day_date_2i').val(date.format('M')).change();
+        $('#day_date_1i').val(date.format('YYYY')).change();
+    }
+        
+    //$("td[data-date='" + date.render('YYYY-MM-DD') + "']").css('background-color', 'grey');
+}
+
+function daySelected()//handle day selected by dropdown //doesnt work!!!
+{
+    var day = moment($('#day_date_1i').val() + "-" + $('#day_date_2i').val() + "-" + $('#day_date_3i').val());
+    if(day.isValid())
+    {//change color
+       // $("td[data-date='" + day.render('YYYY-MM-DD') + "']").css('background-color', 'grey');
+       // $('#calendar').fullCalendar('gotoDate', day);
+       changeDay(day, true);
+    }
+}
+</script>
 </head>
 
 <body>
     <%= render 'layouts/navbar' %>
 
     <div class="container white-container">
+        <%= render 'layouts/flash_message' %>
         <div class="row">
-            <div class="col-xs-3 col-xs-offset-1">
-                <h5 class="text-center">Select a day to add it to the schedule.</h5>
-                <table class="table-condensed table-bordered table-striped calendar">
-                    <thead>
-                        <tr>
-                            <th colspan="7">
-                                <span class="btn-group">
-
-                        	<p class="table-title">February 2012</p>
-
-                        </span>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Su</th>
-                            <th>Mo</th>
-                            <th>Tu</th>
-                            <th>We</th>
-                            <th>Th</th>
-                            <th>Fr</th>
-                            <th>Sa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="muted">29</td>
-                            <td class="muted">30</td>
-                            <td class="muted">31</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                            <td>9</td>
-                            <td>10</td>
-                            <td>11</td>
-                        </tr>
-                        <tr>
-                            <td>12</td>
-                            <td>13</td>
-                            <td>14</td>
-                            <td>15</td>
-                            <td>16</td>
-                            <td>17</td>
-                            <td>18</td>
-                        </tr>
-                        <tr>
-                            <td>19</td>
-                            <td class="btn-primary"><strong>20</strong></td>
-                            <td>21</td>
-                            <td>22</td>
-                            <td>23</td>
-                            <td>24</td>
-                            <td>25</td>
-                        </tr>
-                        <tr>
-                            <td>26</td>
-                            <td>27</td>
-                            <td>28</td>
-                            <td>29</td>
-                            <td class="muted">1</td>
-                            <td class="muted">2</td>
-                            <td class="muted">3</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="col-xs-5 col-xs-offset-1">
+                <h4 class="text-center">Select a day to add it to the schedule.</h4>
+                <div id='calendar'></div>
             </div>
-            <div class="col-xs-6 col-xs-offset-1">
+            <div class="col-xs-5 col-xs-offset-1">
                 <br />
                 <br />
-                <p>To add a day, either select a day on the calendar or manually input the day below: </p>
+                <h4>To add a day, either select a day on the calendar or manually input the day below: </h4>
                 <div class="row">
                     <div class="col-xs-9 col-xs-offset-1">
-                        <form>
+                        
+                        <%= form_for( @day )do |f| %>
                             <div class="form-group">
-                                Month:
-                                <select class="extra-right-margin form-control">
-                                    <option value="January">January</option>
-                                    <option value="February">February</option>
-                                    <option value="March">March</option>
-                                    <option value="April">April</option>
-                                    <option value="May">May</option>
-                                    <option value="June">June</option>
-                                    <option value="July">July</option>
-                                    <option value="August">August</option>
-                                    <option value="September">September</option>
-                                    <option value="October">October</option>
-                                    <option value="November">November</option>
-                                    <option value="December">December</option>
-                                </select>
+                              <%= date_select( :day, :date, {start_year: Date.today.year, 
+                                          prompt: { day: 'Select day', month: 
+                                          'Select month', year: 'Select year' },
+                                          :order => [:day, :month, :year]},
+                                          {:class => "form-group form-control"}  )%>
+                        <!--The id for the day select is day_date_3i, month is 2i and year is 1i-->
                             </div>
-                            <div class="form-group">
-                                Year:
-                                <select class="form-control">
-                                    <option value="2016">2016</option>
-                                    <option value="2015">2015</option>
-                                    <option value="2014">2014</option>
-                                </select>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <a href="/schedule/schedule1">
-                                    <btn class="btn btn-success btn-wide extra-right-margin">Submit</btn>
-                                </a>
-                                <a href="/schedule/schedule1">
-                                    <btn class="btn btn-danger btn-wide">Cancel</btn>
-                                </a>
-                            </div>
-                        </form>
+                            <%= f.submit "Add Day", class: "btn btn-primary" %>
+                        <% end %>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-
 </body>
 
 </html>

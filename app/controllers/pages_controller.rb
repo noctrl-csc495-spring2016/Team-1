@@ -15,7 +15,6 @@ class PagesController < ApplicationController
   def home3
     render 'pages/home/home3.html'
   end
-  
   # /about
   def about
   end

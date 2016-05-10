@@ -1,0 +1,30 @@
+<%=render 'layouts/navbar' %>
+<div class="container">
+        <div class="row">
+            <div class='col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 well'>
+                <h3 class="text-center">Donor CSV Export</h3>
+                <p class="text-center">Export data for all donors for a month in CSV format.</p>
+                <br>
+      <%= form_tag('/reports/donor.csv', :method => 'get') do %>
+      <div class="form-group">
+      Month:
+      <%= select_month(Date.today, {}, {:class => "extra-right-margin form-control"} ) %>
+      </div>
+       <div class="form-group">
+      Year:
+      <%= select_year(Date.today, {:start_year => Time.now.year, :end_year => 2016},
+       {:class => "form-control"}) %>
+       </div>
+        <div class="form-group">
+      Save As:
+      <%= text_field_tag 'filename', nil, {:class => 'form-control', :placeholder => 'donor.csv'}%>
+      </div>
+      <br>
+      <div class="form-group">
+      <%= submit_tag 'Export', class: 'btn btn-success btn-wide extra-right-margin' %>
+      <%= link_to 'Cancel', '/reports/report1', class: 'btn btn-danger btn-wide'%>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

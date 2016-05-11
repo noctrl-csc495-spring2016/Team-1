@@ -33,18 +33,27 @@ module AuthHelper
             redirect_to login_url
         end
     end
-    
-    # Destroys the active users' session, logging them out
-    def log_out
-        
-        session.delete(:user_id)
-        @user_active = nil
-    end
+
     
     def should_view_user(uid)
         if user_active.id != uid && !is_user_admin?
             flash[:danger] = "Permission denied."
             redirect_to '/home/home1'
         end
+    end
+    
+    # Destroys the active users' session, logging them out
+    def sign_out
+        
+        session.delete(:user_id)
+        @user_active = nil
+    end
+    
+    def encrypt(passcode)
+        #Bcrypt::sha1(passcode);
+    end
+    
+    def decrypt(passcode)
+        #Bcrypt::sha1(passcode);
     end
 end

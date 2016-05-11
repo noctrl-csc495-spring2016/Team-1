@@ -1,13 +1,7 @@
 class AuthController < ApplicationController
   
   before_action :user_signed_in, only: [:destroy]
-  
-  def new
-    if logged_in?
-      redirect_to 'home/home1'
-    end
-  end
-  
+
   # Signs the user in
   def create
     
@@ -27,10 +21,16 @@ class AuthController < ApplicationController
     end
   end
   
+  def new
+    if logged_in?
+      redirect_to 'home/home1'
+    end
+  end
+  
   # Signs the user out
   def destroy
     
-    log_out
+    sign_out
     flash[:success] = "Log out successful."
     redirect_to '/login'
   end

@@ -12,17 +12,21 @@ module AuthHelper
         @user_active ||= User.find_by(id: session[:user_id])
     end
     
+    def logged_in
+        user_active != nil
+    end
+    
     def is_user_admin
         if !is_user_admin?
             flash[:danger] = "Admin access required."
-            redirect_to 'home/home1'
+            redirect_to '/pickups'
         end
     end
     
     def admin_or_standard
         if !is_user_admin? && !is_user_reg?
             flash[:danger] = "Permission denied."
-            redirect_to 'home/home1'
+            redirect_to 'pickups'
         end
     end
     
@@ -44,7 +48,7 @@ module AuthHelper
     def should_view_user(uid)
         if user_active.id != uid && !is_user_admin?
             flash[:danger] = "Permission denied."
-            redirect_to '/home/home1'
+            redirect_to '/pickups'
         end
     end
 end

@@ -1,6 +1,6 @@
 class PickupsController < ApplicationController
     
-    before_action :user_signed_in
+    #before_action :user_signed_in
 
     #Bullpen page.
     #Display all pickups where the day_id is null and the rejected flag is false
